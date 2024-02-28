@@ -94,7 +94,7 @@ using (var screen = new SKCanvas(bitmap))
     HttpClient httpClient = new HttpClient();
 
     // Load web bitmap.
-    //string url = "https://www.ghielectronics.com/wp-content/uploads/2024/02/EndpointReleaseThumbnail.jpg";
+    string url = "https://www.ghielectronics.com/wp-content/uploads/2024/02/EndpointReleaseThumbnail.jpg";
 
     try
     {
