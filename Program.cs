@@ -101,7 +101,7 @@ using (var screen = new SKCanvas(bitmap))
     //string url = "https://www.ghielectronics.com/wp-content/uploads/2024/02//EndpointReleaseThumbnail.jpg";
 
     //Google Static Map
-    string url = "https://maps.googleapis.com/maps/api/staticmap?center="+latitude.ToString()+","+longitude.ToString()+"&zoom="+zoomLevel.ToString()+"&size="+ screenWidth.ToString() +"x"+screenHeight.ToString()+"&key="+ googleAPISignature+"";
+    string url = "https://maps.googleapis.com/maps/api/staticmap?center="+latitude.ToString()+","+longitude.ToString()+"&zoom="+zoomLevel.ToString()+"&size="+ screenWidth.ToString() +"x"+screenHeight.ToString()+"&key="+ googleAPISignature;
 
     try
     {
