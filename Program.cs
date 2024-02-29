@@ -7,10 +7,17 @@ using GHIElectronics.Endpoint.Devices.Network;
 using System.Net.NetworkInformation;
 using GHIElectronics.Endpoint.Devices.Rtc;
 
-
+//Initialize RTC
 var rtc = new RtcController();
+rtc.DateTime = new DateTime(2024, 2, 28, 18, 51, 10);
 
-rtc.DateTime = new DateTime(2024, 2, 28, 13, 17, 42);
+//GoogleMaps
+var zoomLevel = 14;
+var latitude = 42.527714;
+var longitude = -83.1036585;
+var googleAPISignature = "ADD YOUR KEY";
+
+
 //Initialize Display
 var backlightPort = EPM815.Gpio.Pin.PD14 / 16;
 var backlightPin = EPM815.Gpio.Pin.PD14 % 16;
@@ -44,8 +51,8 @@ var networkType = GHIElectronics.Endpoint.Devices.Network.NetworkInterfaceType.W
 
 var networkSetting = new WiFiNetworkInterfaceSettings
 {
-    Ssid = "GHI",
-    Password = "ghi555wifi.",
+    Ssid = "39A1BB-2.4",
+    Password = "CP20462654VD",
     DhcpEnable = true,
 };
 var network = new NetworkController(networkType, networkSetting);
@@ -78,23 +85,23 @@ while (NetworkReady == false)
     
 }
 
-
 //SkiaSharp Initialization
 SKBitmap bitmap = new SKBitmap(screenWidth, screenHeight, SKImageInfo.PlatformColorType, SKAlphaType.Premul);
 bitmap.Erase(SKColors.Transparent);
 SKBitmap webBitmap;
 
 
-
-
-//Initialize Screen
+//Initialize Screen Canvas
 using (var screen = new SKCanvas(bitmap))
 {
     
     HttpClient httpClient = new HttpClient();
 
     // Load web bitmap.
-    string url = "https://www.ghielectronics.com/wp-content/uploads/2024/02/EndpointReleaseThumbnail.jpg";
+    //string url = "https://www.ghielectronics.com/wp-content/uploads/2024/02//EndpointReleaseThumbnail.jpg";
+
+    //Google Static Map
+    string url = "https://maps.googleapis.com/maps/api/staticmap?center="+latitude.ToString()+","+longitude.ToString()+"&zoom="+zoomLevel.ToString()+"&size="+ screenWidth.ToString() +"x"+screenHeight.ToString()+"&key="+ googleAPISignature+"";
 
     try
     {
